@@ -1,0 +1,91 @@
+<div class="container">
+    <h2>User Form</h2>
+
+
+    <form class="needs-validation" #form="ngForm">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label >First name <span class="text-danger">*</span></label>
+              <input type="text" name="firstName" #fname="ngModel" required [(ngModel)]="userObj.firstName"  class="form-control"  placeholder="First name" >
+             <div class="text-danger">
+               
+                    <span *ngIf="fname.errors?.['required'] && fname.touched">This is required</span>
+                
+                
+             </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label >Last name</label>
+              <input type="text" name="lastName" required minlength="4" #lname="ngModel" [(ngModel)]="userObj.lastName" class="form-control"  placeholder="Last name" >
+               <div class="text-danger">
+                <span *ngIf="lname.errors?.['required'] && lname.touched">
+                    this is required
+                </span>
+                <span *ngIf="lname.errors?.['minlength'] && lname.touched">
+                    min 4 letter of name
+                </span>
+               </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label >Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" >&#64;</span>
+                </div>
+                <input type="text" name="userName"  [(ngModel)]="userObj.userName" class="form-control"  placeholder="Username">
+                <div class="invalid-feedback">Please choose a username.</div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label >City</label>
+              <input type="text" name="city" [(ngModel)]="userObj.city" class="form-control"  placeholder="City">
+              <div class="invalid-feedback">Please provide a valid city.</div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label >State</label>
+              <select class="form-select" name="state" [(ngModel)]="userObj.state">
+                <option selected disabled value="">Choose...</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Kerala">Kerala</option>
+
+
+
+              </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label >Zip</label>
+              <input type="text" name="zipCode" [(ngModel)]="userObj.zipCode" class="form-control"  placeholder="Zip">
+              <div class="invalid-feedback">Please provide a valid zip.</div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-check">
+                <input class="form-check-input" name="isTermAgree" [(ngModel)]="userObj.isTermAgree" type="checkbox" >
+                <label class="form-check-label" >
+                  Agree to terms and conditions
+                </label>
+                <div class="invalid-feedback">You must agree before submitting.</div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="row mt-3">
+            <div class="col-md-12 text-center">
+              <button class="btn btn-primary" [disabled]="form.invalid" type="button" (click)="onSave()">Submit form</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      
+</div>
