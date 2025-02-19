@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  
+  <!-- Property Binding -->
+  <app-child [childMessage]="parentMessage"></app-child>
+
+  <!-- Two-Way Binding -->
+  <input class="par" [(ngModel)]="parentMessage" placeholder="Update Parent Message" />
+</div>
